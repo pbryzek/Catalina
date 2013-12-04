@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Margins -->
+    <dimen name="nanoMargin">1dp</dimen>
+    <dimen name="microMargin">3dp</dimen>
+    <dimen name="tinyMargin">5dp</dimen>
+    <dimen name="smallMargin">10dp</dimen>
+    <dimen name="mediumMargin">25dp</dimen>
+    <dimen name="largeMargin">45dp</dimen>
+    
+    <!--  Fonts -->
+    <dimen name="nanoFont">8dp</dimen>
+    <dimen name="microFont">10dp</dimen>
+    <dimen name="tinyFont">12dp</dimen>
+    <dimen name="smallFont">14dp</dimen>
+    <dimen name="normalFont">16dp</dimen>
+    <dimen name="mediumFont">18sp</dimen>
+    <dimen name="largeFont">20sp</dimen>  
+    <dimen name="titleFont">30sp</dimen>  
+    
+    <!--  Dimens -->
+    <dimen name="headerHeight">50dp</dimen>  
+    <dimen name="rowHeight">50dp</dimen>      
+    <dimen name="dividerHeight">4dp</dimen>  
+    <dimen name="checkDimen">30dp</dimen>  
+    <dimen name="circleDiameter">25dp</dimen>
+    
+</resources>

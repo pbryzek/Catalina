@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Catalina</string>
+    <string name="offers">Offers</string>
+    <string name="help">Help</string>
+    <string name="scan">Scan</string>
+    <string name="cart">Cart</string>
+    <string name="settings">Settings</string>
+    <string name="connected">Connected</string>
+    <string name="card_scanned">Card Scanned</string>
+    <string name="savings_avail">Up to $%s of Savings Available</string>
+    <string name="price_str">$%.2f</string>
+    <string name="ready_to_shop">Ready to Shop</string>
+    <string name="view_my_offers">View My Offers</string>
+    <string name="shop">Shop</string>
+    <string name="check_out">Check Out</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="total">Total: $%.2f</string>
+    <string name="you_saved">You Saved: $%.2f</string>
+    <string name="scan_barcode">Scan Register Barcode</string>
+    <string name="scan_card">Scan Loyalty card on Register</string>
+    <string name="pay_with_card">Pay with Credit or Debit</string>
+    <string name="bag_go">Bag and Go!</string>
+    <string name="bad_connection">Bad connection detected, please verify that you have a good signal or connect to WIFI.</string>
+    <string name="info">Info</string>
+    
+    <string name="price">Price: $%.2f</string>
+    <string name="savings">Savings: $%.2f</string>
+
+</resources>

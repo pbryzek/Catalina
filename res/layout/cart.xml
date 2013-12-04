@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_dark_gray" >
+
+    <View
+        android:id="@+id/divider0"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_alignParentTop="true"
+        android:background="@color/divider_color" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headerHeight"
+        android:layout_below="@+id/divider0"
+        android:background="@drawable/gradient_blue" >
+
+        <TextView
+            android:id="@+id/savings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/smallMargin"
+            android:singleLine="true"
+            android:textColor="@android:color/white" />
+
+        <RelativeLayout
+            android:id="@+id/shoppingCartAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/savings" >
+
+            <TextView
+                android:id="@+id/savingsAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/smallMargin"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="@dimen/headerHeight"
+                android:layout_height="@dimen/headerHeight"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/tinyMargin"
+                android:layout_toLeftOf="@+id/savingsAmount"
+                android:scaleType="fitCenter"
+                android:src="@drawable/shopping_cart_small" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_below="@+id/header"
+        android:background="@color/divider_color" />
+
+    <include layout="@layout/ready_to_shop" />
+    
+    <include layout="@layout/shopping_cart" />
+    
+    <include layout="@layout/check_out" />
+
+</RelativeLayout>

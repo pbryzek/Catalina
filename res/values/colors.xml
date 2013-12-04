@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_gray">#F8F8F8 </color>
+    
+	<color name="start_gray">#d3d3d3</color>
+	<color name="end_gray">#f1f1f1 </color>
+	
+	<color name="start_dark_gray">#505050</color>
+	<color name="end_dark_gray">#888888</color>
+	
+	<color name="start_blue">#00BFFF</color>
+	<color name="end_blue">#1874CD</color>
+	
+	<color name="start_orange">#FFCC00</color>
+	<color name="end_orange">#FF9900 </color>
+	
+	<color name="divider_color">#000000 </color>
+	
+</resources>
+ 
