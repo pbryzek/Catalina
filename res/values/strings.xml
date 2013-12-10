@@ -28,4 +28,7 @@
     <string name="price">Price: $%.2f</string>
     <string name="savings">Savings: $%.2f</string>
 
+    <string name="scan">Scan</string>
+    <string name="scanning"> Scanning&#8230;</string>
+   
 </resources>

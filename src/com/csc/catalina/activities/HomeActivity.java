@@ -61,6 +61,19 @@ public class HomeActivity extends BaseActivity {
         setUpViewPager();
 
         setupTabs();
+
+    }
+
+    public void hideActionBar() {
+        if (getActionBar().isShowing()) {
+            getActionBar().hide();
+        }
+    }
+
+    public void showActionBar() {
+        if (!getActionBar().isShowing()) {
+            getActionBar().show();
+        }
     }
 
     private void setUpViewPager() {

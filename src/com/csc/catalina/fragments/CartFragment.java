@@ -131,6 +131,8 @@ public class CartFragment extends BaseFragment implements OnClickListener {
         String savedStr = String.format(saved, totalSavings);
         total.setText(totalStr);
         youSaved.setText(savedStr);
+
+        savingsAmount.setText(totalStr);
     }
 
     @Override
@@ -159,11 +161,6 @@ public class CartFragment extends BaseFragment implements OnClickListener {
         checkOutBtn.setOnClickListener(this);
         scanBtn = (Button) view.findViewById(R.id.scanBtn);
         scanBtn.setOnClickListener(this);
-
-        String priceStr = CatalinaApplication.getInstance().getResources().getString(R.string.price_str);
-        priceStr = String.format(priceStr, price);
-
-        savingsAmount.setText(priceStr);
 
         setReadyToShopVisible();
 
