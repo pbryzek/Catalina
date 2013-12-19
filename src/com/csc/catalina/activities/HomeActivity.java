@@ -1,4 +1,3 @@
-
 package com.csc.catalina.activities;
 
 import android.app.Dialog;
@@ -34,237 +33,252 @@ import java.util.ArrayList;
 
 public class HomeActivity extends BaseActivity {
 
-    private static final String LOG_TAG = HomeActivity.class.getName();
+	private static final String LOG_TAG = HomeActivity.class.getName();
 
-    private HomeFragmentPagerAdapter pagerAdapter;
+	private HomeFragmentPagerAdapter pagerAdapter;
 
-    public static boolean hasFinishedDisplayedSplash;
+	public static boolean hasFinishedDisplayedSplash;
 
-    public static boolean hasDisplayedSplash;
+	public static boolean hasDisplayedSplash;
 
-    private Dialog splashScreenDialog;
+	private Dialog splashScreenDialog;
 
-    private static final int SPLASH_TIME = 1000;
+	private static final int SPLASH_TIME = 5000;
 
-    private final ArrayList<com.actionbarsherlock.app.ActionBar.Tab> tabs = new ArrayList<com.actionbarsherlock.app.ActionBar.Tab>();
+	private final ArrayList<com.actionbarsherlock.app.ActionBar.Tab> tabs = new ArrayList<com.actionbarsherlock.app.ActionBar.Tab>();
 
-    private ViewPager viewPager;
+	private ViewPager viewPager;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        showSplashScreen();
-        setContentView(R.layout.activity_home);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		showSplashScreen();
+		setContentView(R.layout.activity_home);
 
-        setPagerAdapter();
+		setPagerAdapter();
 
-        setUpViewPager();
+		setUpViewPager();
 
-        setupTabs();
+		setupTabs();
 
-    }
+		switchTab(HomeFragmentPagerAdapter.CART_POSITION);
 
-    public void hideActionBar() {
-        if (getActionBar().isShowing()) {
-            getActionBar().hide();
-        }
-    }
+	}
 
-    public void showActionBar() {
-        if (!getActionBar().isShowing()) {
-            getActionBar().show();
-        }
-    }
+	public void hideActionBar() {
+		if (getActionBar().isShowing()) {
+			getActionBar().hide();
+		}
+	}
 
-    private void setUpViewPager() {
+	public void showActionBar() {
+		if (!getActionBar().isShowing()) {
+			getActionBar().show();
+		}
+	}
 
-        ViewPager.SimpleOnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                actionBar.setSelectedNavigationItem(position);
-            }
-        };
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        viewPager.setOffscreenPageLimit(4);
-        if (this instanceof HomeActivity) {
-            viewPager.setOnPageChangeListener(pageChangeListener);
-        }
-        viewPager.setAdapter(pagerAdapter);
-    }
+	private void setUpViewPager() {
 
-    public void setPagerAdapter() {
-        pagerAdapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
-    }
+		ViewPager.SimpleOnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				super.onPageSelected(position);
+				actionBar.setSelectedNavigationItem(position);
+			}
+		};
+		viewPager = (ViewPager) findViewById(R.id.pager);
+		viewPager.setOffscreenPageLimit(4);
+		if (this instanceof HomeActivity) {
+			viewPager.setOnPageChangeListener(pageChangeListener);
+		}
+		viewPager.setAdapter(pagerAdapter);
+	}
 
-    public void switchTab(int tabPosition) {
-        viewPager.setCurrentItem(tabPosition);
-    }
+	public void setPagerAdapter() {
+		pagerAdapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
+	}
 
-    private void setupTabs() {
-        /** Defining tab listener */
-        TabListener tabListener = new TabListener() {
+	public void switchTab(int tabPosition) {
+		viewPager.setCurrentItem(tabPosition);
+	}
 
-            @Override
-            public void onTabSelected(com.actionbarsherlock.app.ActionBar.Tab tab,
-                    android.support.v4.app.FragmentTransaction ft) {
-                int tabPosition = tab.getPosition();
-                switchTab(tabPosition);
-            }
+	private void setupTabs() {
+		/** Defining tab listener */
+		TabListener tabListener = new TabListener() {
 
-            @Override
-            public void onTabUnselected(com.actionbarsherlock.app.ActionBar.Tab tab,
-                    android.support.v4.app.FragmentTransaction ft) {
-            }
+			@Override
+			public void onTabSelected(
+					com.actionbarsherlock.app.ActionBar.Tab tab,
+					android.support.v4.app.FragmentTransaction ft) {
+				int tabPosition = tab.getPosition();
+				switchTab(tabPosition);
+			}
 
-            @Override
-            public void onTabReselected(com.actionbarsherlock.app.ActionBar.Tab tab,
-                    android.support.v4.app.FragmentTransaction ft) {
-            }
-        };
+			@Override
+			public void onTabUnselected(
+					com.actionbarsherlock.app.ActionBar.Tab tab,
+					android.support.v4.app.FragmentTransaction ft) {
+			}
 
-        int numTabs = HomeFragmentPagerAdapter.tabTitleMap.size();
-        int tabWidth = AndroidNativeDevice.getDeviceWidth(this) / numTabs;
+			@Override
+			public void onTabReselected(
+					com.actionbarsherlock.app.ActionBar.Tab tab,
+					android.support.v4.app.FragmentTransaction ft) {
+			}
+		};
 
-        for (int i = 0; i < numTabs; i++) {
-            TabContainer tabContainer = HomeFragmentPagerAdapter.tabTitleMap.get(i);
+		int numTabs = HomeFragmentPagerAdapter.tabTitleMap.size();
+		int tabWidth = AndroidNativeDevice.getDeviceWidth(this) / numTabs;
 
-            String name = tabContainer.name;
-            Drawable icon = tabContainer.icon;
+		for (int i = 0; i < numTabs; i++) {
+			TabContainer tabContainer = HomeFragmentPagerAdapter.tabTitleMap
+					.get(i);
 
-            RelativeLayout tabLayout = (RelativeLayout) getLayoutInflater().inflate(R.layout.tab_layout, null);
+			String name = tabContainer.name;
+			Drawable icon = tabContainer.icon;
 
-            TextView tabName = (TextView) tabLayout.findViewById(R.id.tabName);
-            tabName.setText(name);
+			RelativeLayout tabLayout = (RelativeLayout) getLayoutInflater()
+					.inflate(R.layout.tab_layout, null);
 
-            ImageView tabIcon = (ImageView) tabLayout.findViewById(R.id.tabIcon);
-            tabIcon.setImageDrawable(icon);
+			TextView tabName = (TextView) tabLayout.findViewById(R.id.tabName);
+			tabName.setText(name);
 
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(tabWidth,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tabLayout.setLayoutParams(params);
+			ImageView tabIcon = (ImageView) tabLayout
+					.findViewById(R.id.tabIcon);
+			tabIcon.setImageDrawable(icon);
 
-            Tab tab = actionBar.newTab()
-                    .setTabListener(tabListener);
-            tab.setCustomView(tabLayout);
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+					tabWidth, RelativeLayout.LayoutParams.WRAP_CONTENT);
+			tabLayout.setLayoutParams(params);
 
-            tabs.add(tab);
-            actionBar.addTab(tab);
-        }
-    }
+			Tab tab = actionBar.newTab().setTabListener(tabListener);
+			tab.setCustomView(tabLayout);
 
-    @Override
-    public void setMessageHandler() {
-        messageHandler = new HomeActivityMessageHandler();
-    }
+			tabs.add(tab);
+			actionBar.addTab(tab);
+		}
+	}
 
-    public class HomeActivityMessageHandler extends BaseActivityMessageHandler {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == CatalinaMessageIds.CATALINA_MESSAGE_IDS.LAUNCH_ITEM.ordinal()) {
-                int position = msg.arg1;
-                CartFragment cartFrag = getCartFrag();
-                ShoppingCartRow row = cartFrag.getRow(position);
-                if (row != null) {
-                    String name = row.getName();
-                    String quantity = row.getQuantity();
-                    double price = row.getPrice();
-                    double savings = row.getSavings();
+	@Override
+	public void setMessageHandler() {
+		messageHandler = new HomeActivityMessageHandler();
+	}
 
-                    launchItemActivity(name, quantity, price, savings);
-                }
-            } else if (msg.what == CatalinaMessageIds.CATALINA_MESSAGE_IDS.DELETE_ROW.ordinal()) {
-                int position = msg.arg1;
-                CartFragment cartFrag = getCartFrag();
-                cartFrag.deleteRow(position);
-            } else {
-                super.handleMessage(msg);
-            }
-        }
-    }
+	public class HomeActivityMessageHandler extends BaseActivityMessageHandler {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == CatalinaMessageIds.CATALINA_MESSAGE_IDS.LAUNCH_ITEM
+					.ordinal()) {
+				int position = msg.arg1;
+				CartFragment cartFrag = getCartFrag();
+				ShoppingCartRow row = cartFrag.getRow(position);
+				if (row != null) {
+					String name = row.getName();
+					String quantity = row.getQuantity();
+					double price = row.getPrice();
+					double savings = row.getSavings();
 
-    protected CartFragment getCartFrag() {
-        return (CartFragment) getSupportFragmentManager()
-                .findFragmentByTag(getFragmentTag(HomeFragmentPagerAdapter.CART_POSITION));
-    }
+					launchItemActivity(name, quantity, price, savings);
+				}
+			} else if (msg.what == CatalinaMessageIds.CATALINA_MESSAGE_IDS.DELETE_ROW
+					.ordinal()) {
+				int position = msg.arg1;
+				CartFragment cartFrag = getCartFrag();
+				cartFrag.deleteRow(position);
+			} else {
+				super.handleMessage(msg);
+			}
+		}
+	}
 
-    protected String getFragmentTag(int id) {
-        return "android:switcher:" + viewPager.getId() + ":" + id;
-    }
+	protected CartFragment getCartFrag() {
+		return (CartFragment) getSupportFragmentManager().findFragmentByTag(
+				getFragmentTag(HomeFragmentPagerAdapter.CART_POSITION));
+	}
 
-    protected void showSplashScreen() {
-        if (hasDisplayedSplash) {
-            if (!CietyFrameworkUtils.isOnline(CatalinaApplication.getInstance())) {
-                String infoMsg = CatalinaApplication.getInstance().getResources()
-                        .getString(R.string.bad_connection);
-                showInfoDialog(infoMsg);
-            }
-        } else {
-            try {
-                hasDisplayedSplash = true;
+	protected String getFragmentTag(int id) {
+		return "android:switcher:" + viewPager.getId() + ":" + id;
+	}
 
-                if (splashScreenDialog == null) {
-                    splashScreenDialog = new Dialog(this, R.style.SplashScreen);
-                }
-                splashScreenDialog.setContentView(R.layout.splash_screen);
-                splashScreenDialog.setCancelable(false);
-                splashScreenDialog.show();
+	protected void showSplashScreen() {
+		if (hasDisplayedSplash) {
+			if (!CietyFrameworkUtils
+					.isOnline(CatalinaApplication.getInstance())) {
+				String infoMsg = CatalinaApplication.getInstance()
+						.getResources().getString(R.string.bad_connection);
+				showInfoDialog(infoMsg);
+			}
+		} else {
+			try {
+				hasDisplayedSplash = true;
 
-                // Set Runnable to remove splash screen just in case
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        hasFinishedDisplayedSplash = true;
-                        removeSplashScreen();
-                    }
-                }, SPLASH_TIME);
-            } catch (NullPointerException e) {
-                Logs.error(LOG_TAG, "Splash npe", e);
-                splashScreenDialog = null;
-            } catch (RuntimeException e) {
-                Logs.error(LOG_TAG, "Splash runtime", e);
-                splashScreenDialog = null;
-            }
-        }
-    }
+				if (splashScreenDialog == null) {
+					splashScreenDialog = new Dialog(this, R.style.SplashScreen);
+				}
+				splashScreenDialog.setContentView(R.layout.splash_screen);
+				splashScreenDialog.setCancelable(false);
+				splashScreenDialog.show();
 
-    /**
-     * Removes the Dialog that displays the splash screen
-     */
-    protected void removeSplashScreen() {
-        if (splashScreenDialog != null) {
-            splashScreenDialog.dismiss();
-            splashScreenDialog = null;
-        }
-        if (!Utils.isOnline(this)) {
-            String infoMsg = CatalinaApplication.getInstance().getResources()
-                    .getString(R.string.bad_connection);
-            showInfoDialog(infoMsg);
-        }
-    }
+				// Set Runnable to remove splash screen just in case
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						hasFinishedDisplayedSplash = true;
+						removeSplashScreen();
+					}
+				}, SPLASH_TIME);
+			} catch (NullPointerException e) {
+				Logs.error(LOG_TAG, "Splash npe", e);
+				splashScreenDialog = null;
+			} catch (RuntimeException e) {
+				Logs.error(LOG_TAG, "Splash runtime", e);
+				splashScreenDialog = null;
+			}
+		}
+	}
 
-    public void launchItemActivity(String name, String quantity, double price, double savings) {
-        Intent i = new Intent(getApplicationContext(), ItemActivity.class);
-        i.putExtra(CatalinaConstants.INTENT_NAME, name);
-        i.putExtra(CatalinaConstants.INTENT_QUANTITY, quantity);
-        i.putExtra(CatalinaConstants.INTENT_PRICE, price);
-        i.putExtra(CatalinaConstants.INTENT_SAVINGS, savings);
-        startActivity(i);
-    }
+	/**
+	 * Removes the Dialog that displays the splash screen
+	 */
+	protected void removeSplashScreen() {
+		if (splashScreenDialog != null) {
+			splashScreenDialog.dismiss();
+			splashScreenDialog = null;
+		}
+		if (!Utils.isOnline(this)) {
+			String infoMsg = CatalinaApplication.getInstance().getResources()
+					.getString(R.string.bad_connection);
+			showInfoDialog(infoMsg);
+		}
+	}
 
-    @Subscribe
-    public void deleteRow(IntMessage deleteRowMsg) {
-        if (deleteRowMsg != null) {
-            String uniqueId = deleteRowMsg.getUniqueId();
-            if (uniqueId.equals(CatalinaConstants.DELETE_ROW)) {
-                CatalinaMessageSender.sendMessage(CatalinaMessageIds.CATALINA_MESSAGE_IDS.DELETE_ROW.ordinal(),
-                        deleteRowMsg.getData(), messageHandler);
-            } else if (uniqueId.equals(CatalinaConstants.LAUNCH_ITEM_ROW)) {
-                CatalinaMessageSender.sendMessage(CatalinaMessageIds.CATALINA_MESSAGE_IDS.LAUNCH_ITEM.ordinal(),
-                        deleteRowMsg.getData(), messageHandler);
-            }
+	public void launchItemActivity(String name, String quantity, double price,
+			double savings) {
+		Intent i = new Intent(getApplicationContext(), ItemActivity.class);
+		i.putExtra(CatalinaConstants.INTENT_NAME, name);
+		i.putExtra(CatalinaConstants.INTENT_QUANTITY, quantity);
+		i.putExtra(CatalinaConstants.INTENT_PRICE, price);
+		i.putExtra(CatalinaConstants.INTENT_SAVINGS, savings);
+		startActivity(i);
+	}
 
-        }
-    }
+	@Subscribe
+	public void deleteRow(IntMessage deleteRowMsg) {
+		if (deleteRowMsg != null) {
+			String uniqueId = deleteRowMsg.getUniqueId();
+			if (uniqueId.equals(CatalinaConstants.DELETE_ROW)) {
+				CatalinaMessageSender.sendMessage(
+						CatalinaMessageIds.CATALINA_MESSAGE_IDS.DELETE_ROW
+								.ordinal(), deleteRowMsg.getData(),
+						messageHandler);
+			} else if (uniqueId.equals(CatalinaConstants.LAUNCH_ITEM_ROW)) {
+				CatalinaMessageSender.sendMessage(
+						CatalinaMessageIds.CATALINA_MESSAGE_IDS.LAUNCH_ITEM
+								.ordinal(), deleteRowMsg.getData(),
+						messageHandler);
+			}
+
+		}
+	}
 
 }

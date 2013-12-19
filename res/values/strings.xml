@@ -24,11 +24,21 @@
     <string name="bag_go">Bag and Go!</string>
     <string name="bad_connection">Bad connection detected, please verify that you have a good signal or connect to WIFI.</string>
     <string name="info">Info</string>
-    
     <string name="price">Price: $%.2f</string>
     <string name="savings">Savings: $%.2f</string>
-
     <string name="scan">Scan</string>
     <string name="scanning"> Scanning&#8230;</string>
-   
+    <string name="help_intro">For information on the different parts of the app, touch one of the images below:</string>
+    <string name="help_scan">To use the scanner in this app, click on the Scan tab, place a bar code in front of the phone\'s camera lense, hold the phone steady, and wait for the device to register the bar code.  To scan again, like the scan button and repeat the process.</string>
+    <string name="help_cart">To use the cart in this app, click on the Cart tab, add items to your cart from regular shopping or from offers.  Then click check out, scan register barcode, scan loyalty card, pay with credit or deb and go!</string>
+    <string name="help_offers">To use the offers in this app, click on the Offers tab, find your deal and add it to your cart!</string>
+    <string name="help_faq">Commonly asked questions:</string>
+    
+    <string name="back">Back</string>
+    
+    <string name="help_scan_title">How to scan.</string>
+    <string name="help_cart_title">How to use the cart.</string>
+    <string name="help_offers_title">How to use offers.</string>
+    <string name="help_faq_title">FAQ.</string>
+
 </resources>

@@ -1,7 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/gradient_dark_gray"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_dark_gray" >
+
+    <View
+        android:id="@+id/divider0"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_alignParentTop="true"
+        android:background="@color/divider_color" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headerHeight"
+        android:layout_below="@+id/divider0"
+        android:background="@drawable/gradient_blue" >
+
+        <ImageView
+            android:id="@+id/helpIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/tinyMargin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/helpIntro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/smallMargin"
+            android:layout_toRightOf="@+id/helpIcon"
+            android:text="@string/help_intro"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/helpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/smallMargin"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:background="@drawable/rounded_corner_blue"
+        android:padding="@dimen/tinyMargin"
+        android:text="@string/back"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/smallFont" 
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/imageRows"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/header"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/scanRow"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/scanImageLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/rowHeight"
+                android:layout_weight=".3"
+                android:background="@drawable/gradient_blue"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/scanImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/tinyMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/scan" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/scanText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/smallMargin"
+                android:layout_weight=".7"
+                android:text="@string/help_scan_title"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/cartRow"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/cartImageLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/rowHeight"
+                android:layout_weight=".3"
+                android:background="@drawable/gradient_blue"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/cartImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/tinyMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cart" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/cartText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/smallMargin"
+                android:layout_weight=".7"
+                android:text="@string/help_cart_title"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/offersRow"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/offersImageLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/rowHeight"
+                android:layout_weight=".3"
+                android:background="@drawable/gradient_blue"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/offersImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/tinyMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/offers" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/offersText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/smallMargin"
+                android:layout_weight=".7"
+                android:text="@string/help_offers_title"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/faqRow"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/faqImageLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/rowHeight"
+                android:layout_weight=".3"
+                android:background="@drawable/gradient_blue"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/faqImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/tinyMargin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/question" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/faqText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/smallMargin"
+                android:layout_weight=".7"
+                android:text="@string/help_faq_title"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
